@@ -1,10 +1,11 @@
 package planit.web.auto.config;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class WebDriverManager {
+public class DriverUtil {
     private static WebDriver driver;
 
     public static WebDriver getDriver () {
@@ -12,7 +13,8 @@ public class WebDriverManager {
     }
 
     public static void initializeBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

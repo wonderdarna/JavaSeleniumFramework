@@ -3,8 +3,7 @@ package planit.web.auto.utils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import planit.web.auto.config.WebDriverManager;
+import planit.web.auto.config.DriverUtil;
 
 import java.io.*;
 import java.util.Properties;
@@ -24,7 +23,7 @@ public class Utility {
 
     public static void screenShot(String name) {
         String path = "src/test/resources/reports/" + name + ".png";
-        TakesScreenshot screenshot = ((TakesScreenshot) WebDriverManager.getDriver());
+        TakesScreenshot screenshot = ((TakesScreenshot) DriverUtil.getDriver());
         File file = screenshot.getScreenshotAs(OutputType.FILE);
         Log.info(Utility.class, "Saving screenshot to: " + path);
         File destfile = new File(path);

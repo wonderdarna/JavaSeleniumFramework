@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import planit.web.auto.config.WebDriverManager;
+import planit.web.auto.config.DriverUtil;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class BasePageListener {
 
 
     public static void goToURL (String url) {
-        WebDriverManager.getDriver().get(url);
+        DriverUtil.getDriver().get(url);
     }
 
     public static WebElement findElement(String xpath) {
@@ -21,14 +21,14 @@ public class BasePageListener {
     }
 
     public static WebElement findElement(String xpath, Long waitTime) {
-        wait = new WebDriverWait(WebDriverManager.getDriver(), waitTime);
+        wait = new WebDriverWait(DriverUtil.getDriver(), waitTime);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         Actions.scrollToElement(element);
         return element;
     }
 
     public static WebElement findElement (By by, Long waitTime) {
-        wait = new WebDriverWait(WebDriverManager.getDriver(), waitTime);
+        wait = new WebDriverWait(DriverUtil.getDriver(), waitTime);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         Actions.scrollToElement(element);
         return element;
@@ -65,6 +65,6 @@ public class BasePageListener {
     }
 
     public static List<WebElement> findElements (By by) {
-        return checkIfElementIsDisplaying(by, 5l) ? WebDriverManager.getDriver().findElements(by) : null;
+        return checkIfElementIsDisplaying(by, 5l) ? DriverUtil.getDriver().findElements(by) : null;
     }
 }
